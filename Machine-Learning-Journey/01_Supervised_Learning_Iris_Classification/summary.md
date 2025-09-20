@@ -36,7 +36,8 @@
       from sklearn.datasets import load_iris
       from sklearn.model_selection import train_test_split
       from sklearn.neighbors import KNeighborsClassifier
-      from sklearn.metrics import accuracy_score '''
+      from sklearn.metrics import accuracy_score 
+  '''
   2.加载并准备数据 (Load & Prepare Data):
       dataset = load_iris()
       X = dataset.data

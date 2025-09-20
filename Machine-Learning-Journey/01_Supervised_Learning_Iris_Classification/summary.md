@@ -32,12 +32,12 @@
 ## 三、 完整的机器学习项目流程 (The Workflow)
 可以记在心里，并应用到未来几乎所有监督学习项目中的标准流程：
   ### 1.导入库 (Import Libraries):
-  '''
+  ``` python
       from sklearn.datasets import load_iris
       from sklearn.model_selection import train_test_split
       from sklearn.neighbors import KNeighborsClassifier
       from sklearn.metrics import accuracy_score 
-  '''
+  
   2.加载并准备数据 (Load & Prepare Data):
       dataset = load_iris()
       X = dataset.data

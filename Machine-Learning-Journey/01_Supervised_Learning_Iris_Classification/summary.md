@@ -37,19 +37,31 @@
       from sklearn.model_selection import train_test_split
       from sklearn.neighbors import KNeighborsClassifier
       from sklearn.metrics import accuracy_score 
-  
-  2.加载并准备数据 (Load & Prepare Data):
+  ```
+  ### 2.加载并准备数据 (Load & Prepare Data):
+  ``` python
       dataset = load_iris()
       X = dataset.data
       y = dataset.target
-  3.划分数据 (Split Data):
+```
+  ### 3.划分数据 (Split Data):
+  ``` python
       X_train, X_test, y_train, y_test = train_test_split(X, y, ...)
-  4.初始化模型 (Initialize Model):
+```
+  ### 4.初始化模型 (Initialize Model):
+  ``` python
       model = KNeighborsClassifier(n_neighbors=3)
-  5.训练模型 (Train Model):
+```
+  ### 5.训练模型 (Train Model):
+  ```python
       model.fit(X_train, y_train)
-  6.进行预测 (Make Predictions):
+```
+  ### 6.进行预测 (Make Predictions):
+  ``` python
       y_pred = model.predict(X_test)
-  7.评估模型 (Evaluate Model):
+```
+ ### 7.评估模型 (Evaluate Model):
+ ``` python
       accuracy = accuracy_score(y_test, y_pred)
       print(f"Accuracy: {accuracy}")
+```

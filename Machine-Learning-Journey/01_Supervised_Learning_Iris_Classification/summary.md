@@ -68,4 +68,4 @@
 ```
 ## 三、可视化
 ### 1.不同品种的花瓣长度平均值
-![不同品种的花瓣长度平均值](../image/petal_length.png)
+![不同品种的花瓣长度平均值](../image/Pair_Plot_of_Iris_Features_by_Species.png)

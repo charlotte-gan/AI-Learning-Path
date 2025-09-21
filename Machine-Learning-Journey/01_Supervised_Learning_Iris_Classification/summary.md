@@ -69,3 +69,6 @@
 ## 三、可视化
 ### 1.不同品种的花瓣长度平均值
 ![不同品种的花瓣长度平均值](../image/Pair_Plot_of_Iris_Features_by_Species.png)
+
+### 2.模型决策边界可视化
+![KNN决策地图](../image/KNN_Decision_Boundary_Plot.png)

@@ -3,12 +3,15 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+from matplotlib.colors import ListedColormap
 
 iris = load_iris()
 '''
 print(iris.keys())
-#print(iris.feature_names)
-df = pd.DataFrame(data=iris.data, columns = iris.feature_names)'''
+#print(iris.feature_names)'''
 
 print(dir(iris))
 x = iris.data
@@ -23,3 +26,53 @@ model.fit(X_train,y_train)
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test,y_pred)
 print(accuracy)
+
+'''
+---------------------------------------------------------------------------------------------------
+'''
+
+
+df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+df['species'] = iris.target
+
+species_map = {0: 'setosa', 1: 'versicolor', 2: 'virginica'}
+df['species_name'] = df['species'].map(species_map)
+
+
+sns.pairplot(df, hue='species_name', markers=["o", "s", "D"])
+plt.suptitle("Iris Data Pair Plot (pairwise feature relationships)", y=1.02)
+plt.show()
+
+# --- 开始决策边界可视化 ---
+X_vis = iris.data[:,2:4]
+y_vis = iris.target
+
+model_vis = KNeighborsClassifier(n_neighbors=3)
+model_vis.fit(X_vis,y_vis)
+
+h = .02
+x_min, x_max = X_vis[:, 0].min() - 1, X_vis[:, 0].max() + 1
+y_min, y_max = X_vis[:, 1].min() - 1, X_vis[:, 1].max() + 1
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                     np.arange(y_min, y_max, h))
+
+Z = model_vis.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = Z.reshape(xx.shape)
+
+plt.figure(figsize=(8, 6))
+cmap_light = ListedColormap(['#FFAAAA', '#AAFFAA', '#AAAAFF'])
+cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
+
+plt.contourf(xx, yy, Z, cmap=cmap_light)
+
+
+sns.scatterplot(x=X_vis[:, 0], y=X_vis[:, 1], hue=df['species_name'],
+                palette=cmap_bold.colors, alpha=1.0, edgecolor="black")
+
+plt.xlim(xx.min(), xx.max())
+plt.ylim(yy.min(), yy.max())
+plt.title("3-Class classification (k = 3)")
+plt.xlabel(iris.feature_names[2])
+plt.ylabel(iris.feature_names[3])
+plt.show()
+

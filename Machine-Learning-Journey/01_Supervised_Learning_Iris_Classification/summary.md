@@ -59,9 +59,13 @@
   ### 6.进行预测 (Make Predictions):
   ``` python
       y_pred = model.predict(X_test)
+
 ```
  ### 7.评估模型 (Evaluate Model):
  ``` python
       accuracy = accuracy_score(y_test, y_pred)
       print(f"Accuracy: {accuracy}")
 ```
+## 三、可视化
+### 1.不同品种的花瓣长度平均值
+![不同品种的花瓣长度平均值](image/petal_length.png)
